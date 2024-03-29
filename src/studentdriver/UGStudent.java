@@ -8,6 +8,6 @@ package studentdriver;
  *
  * @author s551736
  */
-public class UGStudent {
+public class UGStudent extends StudentFees {
 
 }
