@@ -8,7 +8,7 @@ package studentdriver;
  *
  * @author s551736
  */
-public class StudentFees {
+public abstract class StudentFees {
 
     private String studentName;
     private int studentID;
