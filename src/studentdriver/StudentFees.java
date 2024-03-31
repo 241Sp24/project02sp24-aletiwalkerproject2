@@ -11,7 +11,7 @@ package studentdriver;
 public abstract class StudentFees {
 
     private String studentName;
-    private int studentID;
+    int studentID;
     private boolean isEnrolled;
     private int CREDITS_PER_COURSE = 3;
     private double PER_CREDIT_FEE = 543.50;
@@ -54,7 +54,7 @@ public abstract class StudentFees {
         this.isEnrolled = isEnrolled;
     }
 
-    public abstract double getPayAmount();
+    public abstract double getPayableAmount();
 
     public String toString() {
         return "Student name: " + this.studentName + "\nStudent id: " + this.studentName + "\nEnrolled: " + this.isEnrolled;
