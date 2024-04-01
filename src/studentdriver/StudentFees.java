@@ -10,18 +10,21 @@ package studentdriver;
  */
 public abstract class StudentFees {
 
+    //create instance variables
     private String studentName;
-    int studentID;
+    private int studentID;
     private boolean isEnrolled;
     private int CREDITS_PER_COURSE = 3;
     private double PER_CREDIT_FEE = 543.50;
 
+    //method to assign values to instance variables
     public StudentFees(String studentName, int studentID, boolean isEnrolled) {
         this.studentName = studentName;
         this.studentID = studentID;
         this.isEnrolled = isEnrolled;
     }
 
+    //getter and setter methods
     public String getStudentName() {
         return studentName;
     }
@@ -54,8 +57,10 @@ public abstract class StudentFees {
         this.isEnrolled = isEnrolled;
     }
 
+    //abstract method
     public abstract double getPayableAmount();
 
+    //base toString method to build off of in lower classes
     public String toString() {
         return "Student name: " + this.studentName + "\nStudent id: " + this.studentName + "\nEnrolled: " + this.isEnrolled;
     }
