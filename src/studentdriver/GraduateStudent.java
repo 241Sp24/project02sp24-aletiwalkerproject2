@@ -45,13 +45,12 @@ public class GraduateStudent extends StudentFees {
     public double getPayableAmount() {
         if (isIsGraduateAssistant() == true) {
             if (graduateAssistantType.equals("full")) {
-                return 0.0;
+                return ADDITIONAL_FEES;
             } else if (graduateAssistantType.equals("half")) {
                 return (((coursesEnrolled * getCREDITS_PER_COURSE()) * getPER_CREDIT_FEE()) + ADDITIONAL_FEES) / 2;
             }
-        } else {
-            return ((coursesEnrolled * getCREDITS_PER_COURSE()) * getPER_CREDIT_FEE());
         }
+        return ((coursesEnrolled * getCREDITS_PER_COURSE()) * getPER_CREDIT_FEE());
     }
 
     //toString method that adds to toString method of StudentFees
