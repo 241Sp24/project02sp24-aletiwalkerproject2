@@ -26,6 +26,7 @@ public class OnlineStudent extends StudentFees {
     }
 
     //toString method the builds off of StudentFees toString method
+    @Override
     public String toString() {
         return super.toString() + "\nNo of months: " + noOfMonths + "\nPayable amount: " + getPayableAmount();
     }

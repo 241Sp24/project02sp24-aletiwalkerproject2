@@ -61,8 +61,9 @@ public abstract class StudentFees {
     public abstract double getPayableAmount();
 
     //base toString method to build off of in lower classes
+    @Override
     public String toString() {
-        return "Student name: " + this.studentName + "\nStudent id: " + this.studentName + "\nEnrolled: " + this.isEnrolled;
+        return "Student name: " + this.studentName + "\nStudent id: " + this.studentID + "\nEnrolled: " + this.isEnrolled;
     }
 
 }

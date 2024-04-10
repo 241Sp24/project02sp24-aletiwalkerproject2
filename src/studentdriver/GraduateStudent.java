@@ -29,6 +29,7 @@ public class GraduateStudent extends StudentFees {
         super(studentName, studentID, isEnrolled);
         this.coursesEnrolled = coursesEnrolled;
         this.isGraduateAssistant = isGraduateAssistant;
+        this.graduateAssistantType = "";
     }
 
     //get method to see if person is a assistant
@@ -42,6 +43,7 @@ public class GraduateStudent extends StudentFees {
     }
 
     //method to find the cost of tuition includes selction structure to find deductable for assitance types.
+    @Override
     public double getPayableAmount() {
         if (isIsGraduateAssistant() == true) {
             if (graduateAssistantType.equals("full")) {
@@ -54,6 +56,7 @@ public class GraduateStudent extends StudentFees {
     }
 
     //toString method that adds to toString method of StudentFees
+    @Override
     public String toString() {
         return super.toString() + "\nGraduate assistant: " + isIsGraduateAssistant() + "\nGraduate assistant type: " + graduateAssistantType + "\nCourses enrolled: " + getCoursesEnrolled() + "\nPayable amount: " + getPayableAmount();
     }

@@ -17,21 +17,26 @@ public class StudentDriver {
      */
     public static void main(String[] args) throws FileNotFoundException {
         // creating scanner 
-        
+          
       Scanner Myscanner= new Scanner(System.in);
         System.out.println("Enter no of UG students : ");
+         int UGStudents =Myscanner.nextInt();
         System.out.println("Enter the no of Graduate students: ");
+       int  GSStudents = Myscanner.nextInt();
         System.out.println("Enter the no of online students: ");
+        int OSStudents = Myscanner.nextInt();
         
         // creating an array to store students 
     StudentFees[]students = new StudentFees[12];
      
         File inputfile = new File ("input.csv");
         Scanner input = new Scanner (inputfile);
+        int x = 0;
+        
       while(input.hasNextLine()){
           String[]strings = input.nextLine().split(",") ;
-          
-          // Typecasting the UGStudent class
+           
+          if (x < 5){
           int id =Integer.parseInt(strings[0]);
           String name = strings[1];
           boolean enrolled = Boolean.parseBoolean(strings[2]);
@@ -39,35 +44,68 @@ public class StudentDriver {
           boolean HasScholarship = Boolean.parseBoolean(strings[4]);
           double Amount = Double.parseDouble(strings[5]);
          
-          // creating an object for UGstudent variable named UG
-          UGStudent UG = new UGStudent(name,id,enrolled,HasScholarship ,Amount,courseenrolled );
-          
+         students [x] = new UGStudent(name,id,enrolled,HasScholarship ,Amount,courseenrolled );
+         x++;
+          }
+        
           //typecating for GSclass
-          int studentid=Integer.parseInt(strings[0]);
+          else if (x < 9){
+              if (Boolean.parseBoolean(strings[4]) == true){
+             int studentid=Integer.parseInt(strings[0]);
           String studentname = strings[1];
           boolean isstudentenrolled = Boolean.parseBoolean(strings[2]);
-          boolean isstudentGraduateAssistant = Boolean.parseBoolean(strings[3]);
-          String graduateType = strings[4] ;
-          int coursesenrolled = Integer.parseInt(strings[5]);
+          boolean isstudentGraduateAssistant = Boolean.parseBoolean(strings[4]);
+          String graduateType = strings[5] ;
+          int coursesenrolled = Integer.parseInt(strings[3]);
           
-          // creating an object of GraduteStudent variable name  GS
-          GraduateStudent GS = new GraduateStudent(studentname,studentid,isstudentenrolled,isstudentGraduateAssistant,graduateType,coursesenrolled);
+            // creating an object of GraduteStudent variable name  GS
+          students [x] = new GraduateStudent(studentname,studentid,isstudentenrolled,isstudentGraduateAssistant,graduateType,coursesenrolled);
+              x++;
+              }else if(Boolean.parseBoolean(strings[4])== false){
+                  int studentid=Integer.parseInt(strings[0]);
+          String studentname = strings[1];
+          boolean isstudentenrolled = Boolean.parseBoolean(strings[2]);
+          boolean isstudentGraduateAssistant = Boolean.parseBoolean(strings[4]);
+          int coursesenrolled = Integer.parseInt(strings[3]);
           
+            // creating an object of GraduteStudent variable name  GS
+            students [x] = new GraduateStudent(studentname,studentid,isstudentenrolled,isstudentGraduateAssistant,coursesenrolled);
+          x++;
+              }
+         }
+       
            // type casting for OnlineStudent class
-          int idofstudent=Integer.parseInt(strings[0]);
+          else{
+                int idofstudent=Integer.parseInt(strings[0]);
           String studentsname = strings[1];
           boolean isthestudentenrolled = Boolean.parseBoolean(strings[2]);
             int numberofmonths = Integer.parseInt(strings[3]);
             
         // creating an object for online student named os
-        OnlineStudent os = new OnlineStudent (studentsname,idofstudent, isthestudentenrolled,numberofmonths );
+        students [x]= new OnlineStudent (studentsname,idofstudent, isthestudentenrolled,numberofmonths );
+        x++;
+       
+          }
+     }  
+          
+      for (StudentFees a : students){
+              System.out.println(a);
+              System.out.println("");
+                  
+              }
+          }
+            
+      
+          
         
-        // 
-        
+     
+        }
+           
         
           
           
-    }
-    }
+    
 
-}
+    
+
+
