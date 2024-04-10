@@ -87,19 +87,45 @@ public class StudentDriver {
        
           }
      }  
-          
+          // printing the ugstudent objects
+          System.out.println("*******UndergraduteStudent lists *******");
       for (StudentFees a : students){
-              System.out.println(a);
+          if (a instanceof UGStudent){
+               System.out.println(a);
               System.out.println("");
+                    
+          }
+      
+            
                   
               }
+        System.out.println("**********Graduate students list**********");
+      for (StudentFees a : students){
+          if (a instanceof GraduateStudent){
+              System.out.println(a);
+              System.out.println("");
+      
           }
+      }
+         
+            System.out.println("**********Online students list**********");   
+      for(StudentFees a : students){
+          if (a instanceof OnlineStudent){
+              System.out.println(a);
+              System.out.println("");
+          
+          }
+      }
+    }
+}
+              
+       
             
       
           
         
      
-        }
+        
            
         
           
