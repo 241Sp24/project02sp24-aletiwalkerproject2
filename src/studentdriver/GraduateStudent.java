@@ -52,7 +52,7 @@ public class GraduateStudent extends StudentFees {
                 return (((coursesEnrolled * getCREDITS_PER_COURSE()) * getPER_CREDIT_FEE()) + ADDITIONAL_FEES) / 2;
             }
         }
-        return ((coursesEnrolled * getCREDITS_PER_COURSE()) * getPER_CREDIT_FEE());
+        return ((coursesEnrolled * getCREDITS_PER_COURSE()) * getPER_CREDIT_FEE()) + ADDITIONAL_FEES;
     }
 
     //toString method that adds to toString method of StudentFees
