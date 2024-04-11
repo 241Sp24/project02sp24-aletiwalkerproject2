@@ -35,6 +35,7 @@ public class UGStudent extends StudentFees {
         return coursesEnrolled;
     }
 
+    @Override
     public double getPayableAmount() {
         return ADDITIONAL_FEE + coursesEnrolled * 3;
     }

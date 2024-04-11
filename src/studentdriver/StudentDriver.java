@@ -16,23 +16,25 @@ public class StudentDriver {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException {
-        // creating scanner 
+        double total = 0.0;
+        int count = 0;
+// creating scanner  class
           
       Scanner Myscanner= new Scanner(System.in);
-        System.out.println("Enter no of UG students : ");
+        System.out.print("Enter no of UG students : ");
          int UGStudents =Myscanner.nextInt();
-        System.out.println("Enter the no of Graduate students: ");
+        System.out.print("Enter the no of Graduate students: ");
        int  GSStudents = Myscanner.nextInt();
-        System.out.println("Enter the no of online students: ");
+        System.out.print("Enter the no of online students: ");
         int OSStudents = Myscanner.nextInt();
         
-        // creating an array to store students 
+        // creating an array to store students
     StudentFees[]students = new StudentFees[12];
      
         File inputfile = new File ("input.csv");
         Scanner input = new Scanner (inputfile);
         int x = 0;
-        
+        //
       while(input.hasNextLine()){
           String[]strings = input.nextLine().split(",") ;
            
@@ -86,7 +88,12 @@ public class StudentDriver {
         x++;
        
           }
-     }  
+     }
+      input.close();
+      
+      double UGFees = 0;
+      int noOfScholarships = 0;
+      int ugcourses = 0;
           // printing the ugstudent objects
           System.out.println("*******UndergraduteStudent lists *******");
       for (StudentFees a : students){
@@ -94,30 +101,78 @@ public class StudentDriver {
                System.out.println(a);
               System.out.println("");
                     
-          }
-      
-            
-                  
+              if (a.isIsEnrolled()==true){
+              UGFees += a.getPayableAmount();
+              ugcourses += ((UGStudent) a).getCoursesEnrolled();
+              if (((UGStudent) a).hasScholarShip()==true){
+              noOfScholarships ++;
               }
+              }else{
+                  UGStudents--;
+              }
+          }      
+              }
+      
+      double GradFees = 0;
+      int noofGradAssistants = 0;
+      int gradCourses = 0;
+      
         System.out.println("**********Graduate students list**********");
       for (StudentFees a : students){
           if (a instanceof GraduateStudent){
               System.out.println(a);
               System.out.println("");
+              
+              if (a.isIsEnrolled()==true){
+              GradFees += a.getPayableAmount();
+              gradCourses += ((GraduateStudent) a).getCoursesEnrolled();
+              if (((GraduateStudent) a).isIsGraduateAssistant()==true){
+              noofGradAssistants ++;
+              }
+              }else{
+                  GSStudents--;
+              }
       
           }
       }
+      
+      double osFees = 0;
          
             System.out.println("**********Online students list**********");   
       for(StudentFees a : students){
           if (a instanceof OnlineStudent){
               System.out.println(a);
               System.out.println("");
+              
+              if (a.isIsEnrolled()==true){
+              osFees += a.getPayableAmount();
+              }else{
+                  OSStudents--;
+              }
           
           }
       }
+          System.out.println("**********Undergraduate Students details**********");
+         System.out.println("Average student fees: " + (UGFees/4));
+         System.out.println("Scholarship Count: "+ noOfScholarships);
+         System.out.println("Total number of courses: " + ugcourses);
+         System.out.println("");
+         
+         System.out.println("**********Graduate Students details**********");
+         System.out.println("Average student fees: " + (GradFees/GSStudents));
+         System.out.println("Graduate Assistantship Count: "+ noofGradAssistants);
+         System.out.println("Total number of courses: " + gradCourses);
+         System.out.println("");
+         
+         System.out.println("**********Online Students details**********");
+         System.out.println("Average student fees: " + (osFees/OSStudents));
+      
+           }
     }
-}
+    
+
+
+
               
        
             
